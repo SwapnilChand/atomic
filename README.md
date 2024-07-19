@@ -1,6 +1,6 @@
 # Atomic
 
-A simple Todo application built using PySide6 and PyQt.
+A simple Todo application for windows built using PySide6 and PyQt.
 
 ## Features
 
