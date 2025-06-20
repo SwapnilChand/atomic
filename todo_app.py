@@ -1,4 +1,5 @@
 import sys
+import os
 from PySide6 import QtWidgets, QtCore, QtGui, QtCharts
 import datetime
 import json
@@ -94,7 +95,7 @@ class YearlyView(QtWidgets.QWidget):
 class TodoApp(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("To-Do App")
+        self.setWindowTitle("atomic")
         self.setGeometry(100, 100, 1000, 600)
         self.tasks = {}
         self.current_view = "month"
@@ -265,5 +266,11 @@ class TodoApp(QtWidgets.QMainWindow):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = TodoApp()
+    if hasattr(sys, "_MEIPASS"):
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.abspath(".")
+    icon_path = os.path.join(base_path, "atom.ico")
+    window.setWindowIcon(QtGui.QIcon(icon_path))
     window.show()
     sys.exit(app.exec())
